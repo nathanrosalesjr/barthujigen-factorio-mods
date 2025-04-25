@@ -23,7 +23,12 @@ function _print(...)
 end
 
 function refillEntity(entity)
-    if refillOreEnabled and entity.prototype.resource_category == "basic-solid" then
+    if refillOreEnabled and (
+            entity.prototype.resource_category == "basic-solid" 
+            or entity.prototype.resource_category == "hard-solid" 
+            or entity.prototype.name == "lithium-brine"
+            or entity.prototype.resource_category == "basic-with-fluid"
+        ) then
         entity.amount = refillAmount;
     end
     if refillOilEnabled and entity.prototype.resource_category == "basic-fluid" and entity.prototype.infinite_resource ==
